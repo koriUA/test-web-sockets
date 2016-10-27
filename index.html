@@ -1,1 +1,19 @@
-hello web sockets...
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Excel To HTML using codebeautify.org</title>
+	</head>
+	<body>
+		<h1>hello web sockets...</h1>
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>  
+		<script>  
+			var socket = io.connect('/');
+			socket.on('announcements', function(data) {
+				console.log('Got announcement:', data.message);
+			});
+		</script>  
+	</body>
+</html>
