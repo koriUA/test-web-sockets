@@ -11,8 +11,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>  
 		<script>  
 			var socket = io.connect('/');
-			socket.on('announcements', function(data) {
-				console.log('Got announcement:', data.message);
+			socket.on('stats', function(data) {
+				console.log('Connected clients:', data.numClients);
 			});
 		</script>  
 	</body>

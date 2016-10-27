@@ -6,8 +6,21 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+var numClients = 0;
+
 io.on('connection', function(socket) {  
-    socket.emit('announcements', { message: 'A new user has joined!' });
+    numClients++;
+    io.emit('stats', { numClients: numClients });
+
+    console.log('Connected clients:', numClients);
+
+    socket.on('disconnect', function() {
+        numClients--;
+        io.emit('stats', { numClients: numClients });
+
+        console.log('Connected clients:', numClients);
+    });
 });
 
-server.listen(8080);  
+
+server.listen(8080);
