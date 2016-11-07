@@ -11,12 +11,7 @@
 	</style>
 	<link rel="icon" href="data:;base64,=">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>
-		var s = new WebSocket('ws://localhost:3001/users/echo/');
-		s.addEventListener('error', function (m) { console.log("error"); });
-		s.addEventListener('open', function (m) { console.log("websocket connection open"); });
-		s.addEventListener('message', function (m) { console.log(m.data); });
-	</script>
+
 </head>
 
 <body>
@@ -24,7 +19,22 @@
 	<div id='body'>
 		<textarea id='log' name='log' readonly='readonly'></textarea><br/>
 		<input type='text' id='message' name='message' />
+                <button id="send">send</button>
 	</div>
+
+        <script>
+		var s = new WebSocket('ws://localhost:3001/users/echo/');
+		s.addEventListener('error', function (m) { console.log("error"); });
+		s.addEventListener('open', function (m) { console.log("websocket connection open"); });
+		s.addEventListener('message', function (m) { console.log(m.data); });
+
+                var input = document.querySelector('#message');
+                console.log(input);
+                document.querySelector('#send').addEventListener("click", function(){
+                    s.send(input.value);
+                });
+	</script>
+
 </body>
 
 </html>
