@@ -15,9 +15,6 @@ var port = normalizePort(process.env.PORT || '3000');
 var app = express();
 app.set('port', port);
 console.log('listen ', port);
-//var expressWs = require('express-ws')(app);
-
-
 
 var server = http.createServer(app);
 var expressWs = require('express-ws')(app, server);
@@ -29,12 +26,9 @@ server.on('listening', onListening);
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-// view engine setup
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -77,7 +71,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-//module.exports = app;
 
 
 
@@ -87,37 +80,6 @@ app.use(function(err, req, res, next) {
 
 
 
-
-/**
- * Module dependencies.
- */
-
-//var app = require('./application');
-
-
-/**
- * Get port from environment and store in Express.
- */
-
-
-//app.set('port', port);
-//console.log('listen ', port);
-//app.listen(3001);		//for websocket...;
-
-
-/**
- * Create HTTP server.
- */
-
-//var server = http.createServer(app);
-//var expressWs = require('express-ws')(app, server);
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-//server.listen(port);
-//server.on('error', onError);
-//server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
