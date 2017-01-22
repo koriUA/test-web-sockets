@@ -9,8 +9,8 @@ export class AppComponent {
 	public messages = [];
 
 	constructor(){
-		this.ws = new WebSocket('ws://localhost:3000/users/echo/');
-		//this.ws = new WebSocket('ws://node.western.pp.ua/users/echo/');
+		this.ws = new WebSocket('ws://localhost:3000/echo/');
+		//this.ws = new WebSocket('ws://node.western.pp.ua/echo/');
 		this.ws.addEventListener('error', function (m) { console.log("error"); });
 		this.ws.addEventListener('open', function (m) { console.log("websocket connection open"); });
 		this.ws.addEventListener('message', (m) => {
