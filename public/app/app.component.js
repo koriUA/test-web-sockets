@@ -19,7 +19,7 @@ export class AppComponent {
 			console.log("websocket connection open");
 		};
 		this.ws.onerror = function(error){
-			console.log("error111", error);
+			console.log('WebSocket Error ', error);
 		};
 	}
 
