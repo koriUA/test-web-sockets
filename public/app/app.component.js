@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'my-app',
   templateUrl: '/app/app.html',
@@ -8,12 +8,14 @@ export class AppComponent {
 
 	public messages = [];
 
-	constructor(){
+	constructor(public changeDetectorRef: ChangeDetectorRef){
 		//this.ws = new WebSocket('ws://localhost:3000/echo/');
 		this.ws = new WebSocket('ws://node.western.pp.ua/echo/');
 		var that = this;
 		this.ws.onmessage = function(event) {
+			console.log("message", event.data);
 			that.messages.push(event.data);
+			that.changeDetectorRef.detectChanges();	//fixed bug for Edge;
 		};
 		this.ws.onopen = function(event){
 			console.log("websocket connection open");
