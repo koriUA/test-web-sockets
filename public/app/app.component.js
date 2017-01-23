@@ -15,7 +15,7 @@ export class AppComponent {
 		this.ws.onmessage = function(event) {
 			console.log("message", event.data);
 			that.messages.push(event.data);
-			that.changeDetectorRef.detectChanges();	//fixed bug for Edge;
+			that.changeDetectorRef.detectChanges();	//fixed bug for Edge; TODO investigate for removing it;
 		};
 		this.ws.onopen = function(event){
 			console.log("websocket connection open");
