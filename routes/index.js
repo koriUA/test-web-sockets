@@ -9,12 +9,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.ws('/echo', function(ws, req) {
+
+    if (req && req.query && !req.query.access_token){
+        var access_token = guid();
+        ws.send(JSON.stringify({
+            access_token: access_token
+        }));
+    }
+
 	console.error('websocket connection open');
 	connections.push(ws);
 
-    ws.on('message', function(msg) {
+    ws.on('message', function(message) {
     	connections.forEach(function(c){
-			c.send(msg); // Send the new text to all open connections
+			c.send(JSON.stringify({
+                message: message
+            })); // Send the new text to all open connections
 		});
     });
 
@@ -25,6 +35,20 @@ router.ws('/echo', function(ws, req) {
             connections.splice(index, 1);
         }
     });
+
+
 });
 
 module.exports = router;
+
+
+
+//todo move to service Util;
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}

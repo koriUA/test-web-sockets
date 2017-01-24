@@ -16,7 +16,9 @@ export class AppComponent {
 		public webSocketService: WebSocketService,
 		public changeDetectorRef: ChangeDetectorRef
 		){
-		this.ws = this.webSocketService.connect('ws://node.western.pp.ua/echo/');
+		//this.ws = this.webSocketService.connect('ws://localhost:3000/echo/?access_token=test');
+		this.ws = this.webSocketService.connect('ws://localhost:3000/echo/');
+		//this.ws = this.webSocketService.connect('ws://node.western.pp.ua/echo/');
 		this.ws.subscribe( data => {
 			this.messages.push(event.data);
 			this.changeDetectorRef.detectChanges();	//fixed bug for Edge; TODO investigate for removing it;
