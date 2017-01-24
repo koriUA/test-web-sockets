@@ -6,3 +6,8 @@
 		<input type="text" class="send-message" name="message" #input />
     </form>
 </div>
+
+<div>
+	Online:
+	<div *ngFor="let connection of connections">{{connection}}</div>
+</div>

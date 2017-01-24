@@ -16,11 +16,21 @@ export class AppComponent {
 		public webSocketService: WebSocketService,
 		public changeDetectorRef: ChangeDetectorRef
 		){
-		//this.ws = this.webSocketService.connect('ws://localhost:3000/echo/?access_token=test');
-		this.ws = this.webSocketService.connect('ws://localhost:3000/echo/');
-		//this.ws = this.webSocketService.connect('ws://node.western.pp.ua/echo/');
-		this.ws.subscribe( data => {
-			this.messages.push(event.data);
+
+		this.ws = this.webSocketService.connect('ws://' + location.hostname + (location.port?':'+location.port:'') + '/echo/?access_token=' + localStorage.access_token);
+		
+		this.ws.subscribe( messageEvent => {
+			var data = JSON.parse(messageEvent.data);
+			console.log(data);
+			if (data.new_access_token){
+				localStorage.access_token = data.new_access_token;
+			}
+			if (data.connections){
+				this.connections = data.connections;
+			}
+			if (data.message){
+				this.messages.push(data.message);
+			}
 			this.changeDetectorRef.detectChanges();	//fixed bug for Edge; TODO investigate for removing it;
 		})
 	}
