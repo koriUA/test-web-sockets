@@ -4,10 +4,6 @@ var ConnectionsService = require('../services/connections.service.js');
 
 
 
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
-
 router.ws('/echo', function(ws, req) {
 
 	var access_token = ConnectionsService.getToken(ws, req);
@@ -32,6 +28,10 @@ router.ws('/echo', function(ws, req) {
 			connections: ConnectionsService.getAllUsersByConnections()
 		});
     });
+});
+
+router.get('/*', function(req, res, next) {
+  res.render('index');
 });
 
 module.exports = router;
