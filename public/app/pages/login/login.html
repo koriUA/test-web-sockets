@@ -1,0 +1,15 @@
+<h1>login page content...</h1>
+
+<div class="body">
+	<div class="messages-container">
+		<div class="message" *ngFor="let message of messages">{{message}}</div>
+	</div>
+	<form (ngSubmit)="send(input)" novalidate #form="ngForm">
+		<input type="text" class="send-message" name="message" #input />
+    </form>
+</div>
+
+<div>
+	Online:
+	<div *ngFor="let connection of connections">{{connection}}</div>
+</div>

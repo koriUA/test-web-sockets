@@ -1,21 +1,4 @@
-input, textarea {border:1px solid #CCC;margin:0px;padding:0px}
-
-.body {max-width:800px;margin:auto}
-
-.messages-container {
-	height: 500px;
-    overflow-y: auto;
-    overflow-x: hidden;
+body {
+    margin: 0;
 }
 
-.message {
-	font-size: 12px;
-    background: #eee;
-    padding: 5px;
-    color: #525252;
-    margin: 1px 0;
-}
-
-.send-message {
-	width: 100%;
-}

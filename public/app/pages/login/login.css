@@ -1,0 +1,17 @@
+.messages-container {
+	height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.message {
+	font-size: 12px;
+    background: #eee;
+    padding: 5px;
+    color: #525252;
+    margin: 1px 0;
+}
+
+.send-message {
+	width: 100%;
+}
