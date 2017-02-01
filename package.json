@@ -14,9 +14,11 @@
     "express-ws": "^2.0.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
-
-
-
+    "db-migrate": "^0.10.0-beta.20",
+    "db-migrate-mysql": "^1.1.10",
+    "mysql": "^2.13.0",
+    "async": "^1.5.2",
+   
     "@angular/common": "~2.1.1",
     "@angular/compiler": "~2.1.1",
     "@angular/core": "~2.1.1",

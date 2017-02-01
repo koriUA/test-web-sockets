@@ -38,7 +38,10 @@ export class Login {
 		if (!input.value){
 			return;
 		}
-		this.ws.next(input.value);
+		this.ws.next({
+			type: "message",
+			message: input.value
+		});
 		input.value = '';
 	}
 }
